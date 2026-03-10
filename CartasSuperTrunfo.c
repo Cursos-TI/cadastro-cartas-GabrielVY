@@ -103,14 +103,64 @@ int main() {
   printf("Super poder: %.2f", super_poder2);
 
   // Resultados
-  printf("\n\nComparação de Cartas: (1 = Carta 1 venceu, 0 = Carta 2 venceu)\n");
-  printf("População: %d\n", populacao1 > populacao2);
-  printf("Área: %d\n", area1 > area2);
-  printf("PIB: %d\n", pib1 > pib2);
-  printf("Pontos Turísticos: %d\n", pontos_turisticos1 > pontos_turisticos2);
-  printf("Densidade Populacional: %d\n", densidade_pop1 < densidade_pop2); // OBS: Carta com menor valor vence
-  printf("PIB per Capita: %d\n", pib_capita1 > pib_capita2);
-  printf("Super Poder: %d\n", super_poder1 > super_poder2);
+  printf("\n\nComparação de Cartas: \n");
+
+  // Compara população
+  if (populacao1 > populacao2) {
+    printf("População: Carta 1 venceu!\n");
+  } else {
+    printf("População: Carta 2 venceu!\n");
+  }
+
+  // Compara area
+  if (area1 > area2) {
+    printf("Área: Carta 1 venceu!\n");
+  } else {
+    printf("Área: Carta 2 venceu!\n");
+  }
+
+  // Compara pib
+  if (pib1 > pib2) {
+    printf("PIB: Carta 1 venceu!\n");
+  } else {
+    printf("PIB: Carta 2 venceu!\n");
+  }
+
+  // Compara pontos turisticos
+  if (pontos_turisticos1 > pontos_turisticos2) {
+    printf("Pontos Turísticos: Carta 1 venceu!\n");
+  } else {
+    printf("Pontos Turísticos: Carta 2 venceu!\n");
+  }
+
+  // Compara Densidade Populacional
+  if (densidade_pop1 < densidade_pop2) {
+    printf("Densidade Populacional: Carta 1 venceu!\n");
+  } else {
+    printf("Densidade Populacional: Carta 2 venceu!\n");
+  }
+
+  // Compara PIB per Capita
+  if (pib_capita1 > pib_capita2) {
+    printf("PIB per Capita: Carta 1 venceu!\n");
+  } else {
+    printf("PIB per Capita: Carta 2 venceu!\n");
+  }
+
+  // Compara Super Poder
+  if (super_poder1 > super_poder1) {
+    printf("Super Poder: Carta 1 venceu!\n");
+  } else {
+    printf("Super Poder: Carta 2 venceu!\n");
+  }
+
+  // printf("População: %d\n", populacao1 > populacao2);
+  // printf("Área: %d\n", area1 > area2);
+  // printf("PIB: %d\n", pib1 > pib2);
+  // printf("Pontos Turísticos: %d\n", pontos_turisticos1 > pontos_turisticos2);
+  // printf("Densidade Populacional: %d\n", densidade_pop1 < densidade_pop2); // OBS: Carta com menor valor vence
+  // printf("PIB per Capita: %d\n", pib_capita1 > pib_capita2);
+  // printf("Super Poder: %d\n", super_poder1 > super_poder2);
   
   return 0;
 } 
