@@ -1,10 +1,14 @@
 #include <stdio.h>
+#include <string.h>
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das cartas
 // Objetivo: No nível novato você deve criar as cartas representando as cidades utilizando scanf para entrada de dados e printf para exibir as informações.
 
 int main() {
+  // Caso seja true, automaticamente cria as 2 cartas
+  int modo_teste = 1;
+
   // Área para definição das variáveis para armazenar as propriedades das cidades
   // Carta 1
   char estado1;
@@ -30,40 +34,60 @@ int main() {
   int pontos_turisticos2;
   float super_poder2;
 
-  // Área para entrada de dados
-  // Entrada Carta 1
-  printf("Carta 1: \n");
-  printf("Nome do estado (A-H): ");
-  scanf("%c", &estado1);
-  printf("Codigo da carta (ex: A01): ");
-  scanf("%s", codigo_carta1);
-  printf("Nome da cidade: ");
-  scanf(" %s", cidade1);
-  printf("População: ");
-  scanf("%lu", &populacao1);
-  printf("Area (em km²): ");
-  scanf("%f", &area1);
-  printf("PIB: ");
-  scanf("%f", &pib1);
-  printf("Número de pontos turísticos: ");
-  scanf("%d", &pontos_turisticos1);
+  if (modo_teste == 0) {
+    // Área para entrada de dados
+    // Entrada Carta 1
+    printf("Carta 1: \n");
+    printf("Nome do estado (A-H): ");
+    scanf("%c", &estado1);
+    printf("Codigo da carta (ex: A01): ");
+    scanf("%s", codigo_carta1);
+    printf("Nome da cidade: ");
+    scanf(" %s", cidade1);
+    printf("População: ");
+    scanf("%lu", &populacao1);
+    printf("Area (em km²): ");
+    scanf("%f", &area1);
+    printf("PIB: ");
+    scanf("%f", &pib1);
+    printf("Número de pontos turísticos: ");
+    scanf("%d", &pontos_turisticos1);
 
-  // Entrada Carta 2
-  printf("\nCarta 2: \n");
-  printf("Nome do estado (A-H): ");
-  scanf(" %c", &estado2);
-  printf("Codigo da carta (ex: A01): ");
-  scanf("%s", codigo_carta2);
-  printf("Nome da cidade: ");
-  scanf(" %s", cidade2);
-  printf("População: ");
-  scanf("%lu", &populacao2);
-  printf("Area (em km²): ");
-  scanf("%f", &area2);
-  printf("PIB: ");
-  scanf("%f", &pib2);
-  printf("Número de pontos turísticos: ");
-  scanf("%d", &pontos_turisticos2);
+    // Entrada Carta 2
+    printf("\nCarta 2: \n");
+    printf("Nome do estado (A-H): ");
+    scanf(" %c", &estado2);
+    printf("Codigo da carta (ex: A01): ");
+    scanf("%s", codigo_carta2);
+    printf("Nome da cidade: ");
+    scanf(" %s", cidade2);
+    printf("População: ");
+    scanf("%lu", &populacao2);
+    printf("Area (em km²): ");
+    scanf("%f", &area2);
+    printf("PIB: ");
+    scanf("%f", &pib2);
+    printf("Número de pontos turísticos: ");
+    scanf("%d", &pontos_turisticos2);
+  } else {
+    // Carta 1 - São Paulo
+    estado1 = 'A';
+    strcpy(codigo_carta1, "A01");
+    strcpy(cidade1, "SaoPaulo");
+    populacao1 = 12300000;
+    area1 = 1521.0;
+    pib1 = 699000000.0;
+    pontos_turisticos1 = 50;
+
+    // Carta 2 - Rio de Janeiro
+    estado2 = 'B';
+    strcpy(codigo_carta2, "B01");
+    strcpy(cidade2, "Rio");
+    populacao2 = 6748000;
+    area2 = 1200.0;
+    pib2 = 300000000.0;
+    pontos_turisticos2 = 30;
+  }
 
   // Calcula alguns dados com base na informações providas
   pib_capita1 = pib1 / populacao1;
@@ -102,57 +126,102 @@ int main() {
   printf("Número de Pontos Turísticos: %d\n", pontos_turisticos2);
   printf("Super poder: %.2f", super_poder2);
 
-  // Resultados
-  printf("\n\nComparação de Cartas: \n");
+  printf("\n\nQual atributo você gostaria de comparar?\n");
+  printf("[1] População\n");
+  printf("[2] Área\n");
+  printf("[3] PIB \n");
+  printf("[4] Número de pontos turísticos\n");
+  printf("[5] Densidade demográfica\n");
+  printf("Escolha: ");
 
-  // Compara população
-  if (populacao1 > populacao2) {
-    printf("População: Carta 1 venceu!\n");
-  } else {
-    printf("População: Carta 2 venceu!\n");
-  }
+  int escolha;
+  scanf("%d", &escolha);
 
-  // Compara area
-  if (area1 > area2) {
-    printf("Área: Carta 1 venceu!\n");
-  } else {
-    printf("Área: Carta 2 venceu!\n");
-  }
+  printf("\nComparação de Cartas: \n");
+  switch (escolha) {
+    case 1:
+      printf("Escolha: População\n");
 
-  // Compara pib
-  if (pib1 > pib2) {
-    printf("PIB: Carta 1 venceu!\n");
-  } else {
-    printf("PIB: Carta 2 venceu!\n");
-  }
+      // Empate
+      if (populacao1 == populacao2) {
+        printf("Resultado: Empate!\n");
+        break;
+      }
 
-  // Compara pontos turisticos
-  if (pontos_turisticos1 > pontos_turisticos2) {
-    printf("Pontos Turísticos: Carta 1 venceu!\n");
-  } else {
-    printf("Pontos Turísticos: Carta 2 venceu!\n");
-  }
+      if (populacao1 > populacao2) {
+        printf("Resultado: Carta 1 venceu!\n");
+      } else {
+        printf("Resultado: Carta 2 venceu!\n");
+      }
+      break;
+    case 2:
+      printf("Escolha: PIB\n");
 
-  // Compara Densidade Populacional
-  if (densidade_pop1 < densidade_pop2) {
-    printf("Densidade Populacional: Carta 1 venceu!\n");
-  } else {
-    printf("Densidade Populacional: Carta 2 venceu!\n");
-  }
+      // Empate
+      if (pib1 == pib2) {
+        printf("Resultado: Empate!\n");
+        break;
+      }
 
-  // Compara PIB per Capita
-  if (pib_capita1 > pib_capita2) {
-    printf("PIB per Capita: Carta 1 venceu!\n");
-  } else {
-    printf("PIB per Capita: Carta 2 venceu!\n");
+      if (pib1 > pib2) {
+        printf("Resultado: Carta 1 venceu!\n");
+      } else {
+        printf("Resultado: Carta 2 venceu!\n");
+      }
+      break;
+    case 3:
+      printf("Escolha: População\n");
+
+      // Empate
+      if (populacao1 == populacao2) {
+        printf("Resultado: Empate!\n");
+        break;
+      }
+
+      if (populacao1 > populacao2) {
+        printf("Resultado: Carta 1 venceu!\n");
+      } else {
+        printf("Resultado: Carta 2 venceu!\n");
+      }
+      break;
+    case 4:
+      printf("Escolha: Número de pontos turísticos\n");
+
+      // Empate
+      if (pontos_turisticos1 == pontos_turisticos2) {
+        printf("Resultado: Empate!\n");
+        break;
+      }
+
+      if (populacao1 > populacao2) {
+        printf("Resultado: Carta 1 venceu!\n");
+      } else {
+        printf("Resultado: Carta 2 venceu!\n");
+      }
+      break;
+    case 5:
+      printf("Escolha: Densidade demográfica\n");
+
+      // Empate
+      if (densidade_pop1 == densidade_pop2) {
+        printf("Resultado: Empate!\n");
+        break;
+      }
+
+      if (densidade_pop1 < densidade_pop2) {
+        printf("Resultado: Carta 1 venceu!\n");
+      } else {
+        printf("Resultado: Carta 2 venceu!\n");
+      }
+      break;
   }
 
   // Compara Super Poder
-  if (super_poder1 > super_poder1) {
-    printf("Super Poder: Carta 1 venceu!\n");
-  } else {
-    printf("Super Poder: Carta 2 venceu!\n");
-  }
+  // if (super_poder1 > super_poder1) {
+  //   printf("Super Poder: Carta 1 venceu!\n");
+  // } else {
+  //   printf("Super Poder: Carta 2 venceu!\n");
+  // }
 
   // printf("População: %d\n", populacao1 > populacao2);
   // printf("Área: %d\n", area1 > area2);
